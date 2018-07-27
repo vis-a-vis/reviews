@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const db = require('../db/Review.js');
 
 console.log(db);
@@ -9,11 +9,12 @@ console.log(db);
 const app = express();
 const port = process.env.PORT || 3002;
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
+
 
 app.get('/', (req, res) => {
   db.getReviews((err, data) => {
