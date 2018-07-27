@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 const faker = require('faker');
-// const dataGenerator = require('./../dataGenerator');
 
 const connection = mysql.createConnection({
   host: 'localhost',

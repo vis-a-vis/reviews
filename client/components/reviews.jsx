@@ -19,6 +19,12 @@ export default class Reviews extends React.Component {
     this.getReviews();
   }
 
+  search(term) {
+    console.log(`${term} was searched`);
+
+    axios.post({});
+  }
+
   onStarClick(nextValue, prevValue, name) {
     this.setState({ rating: nextValue });
   }
