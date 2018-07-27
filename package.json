@@ -9,6 +9,10 @@
     "start": "nodemon ./server/server.js",
     "eslint": "./node_modules/.bin/eslint"
   },
+  "jest": {
+    "collectCoverage": true,
+    "verbose": true
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -29,6 +33,7 @@
     "react-dom": "^16.2.0",
     "react-ratings-declarative": "^3.4.1",
     "react-star-rating-component": "^1.4.1",
+    "supertest": "^3.1.0",
     "webpack": "^3.11.0"
   },
   "devDependencies": {

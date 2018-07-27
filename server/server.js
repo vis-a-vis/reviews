@@ -15,8 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
-
-app.get('/', (req, res) => {
+app.get('/rooms/1', (req, res) => {
   db.getReviews((err, data) => {
     if (err) {
       console.error(err);
@@ -25,8 +24,8 @@ app.get('/', (req, res) => {
     }
   });
 });
-
-
 app.listen(port, () => {
   console.log(`server running at: http://localhost:${port}`);
 });
+
+module.export = app;

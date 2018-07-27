@@ -23,9 +23,9 @@ export default class Reviews extends React.Component {
     this.setState({ rating: nextValue });
   }
 
-  handleChange(e) {
-    this.setState({ rating: e.target.value });
-  }
+  // handleChange(e) {
+  //   this.setState({ rating: e.target.value });
+  // }
 
   getReviews() {
     axios
