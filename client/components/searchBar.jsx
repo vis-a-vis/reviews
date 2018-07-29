@@ -9,11 +9,7 @@ class SearchBar extends React.Component {
     };
   }
 
-  search() {
-    this.on;
-  }
-
-  handleChange(e) {
+  handleQueryChange(e) {
     this.setState({ query: e.target.value });
   }
 
@@ -21,7 +17,7 @@ class SearchBar extends React.Component {
     return (
       <div>
         <view>
-          <SearchBar onChange={this.handleChange} />
+          <input value={this.state.query} onChange={this.handleChange} />
         </view>
       </div>
     );

@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS reviews_list;
-CREATE DATABASE reviews_list;
-USE reviews_list;
+DROP DATABASE IF EXISTS reviews;
+CREATE DATABASE reviews;
+USE reviews;
 
 CREATE TABLE reviews (
   id int NOT NULL AUTO_INCREMENT,
