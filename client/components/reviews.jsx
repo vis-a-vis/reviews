@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import StarRatingComponent from 'react-star-rating-component';
-// import SearchBar from './searchBar.jsx';
+import SearchBar from './SearchBar';
 
 export default class Reviews extends React.Component {
   constructor(props) {
@@ -49,16 +49,24 @@ export default class Reviews extends React.Component {
       <div>
         <div>
           <h2>
-            Reviews:
-            {/* {rating} */}
+            Rating from state:
+            {rating}
           </h2>
           <StarRatingComponent
-            name="rate1"
+            name="rate2"
+            editing={false}
+            renderStarIcon={() => (
+              <span>
+
+              </span>
+            )}
             starCount={5}
-            value={rating}
-            onStarClick={this.onStarClick}
+            value={5}
           />
         </div>
+        <span>
+          <SearchBar />
+        </span>
       </div>
     );
   }

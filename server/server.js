@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('http://localhost:3002/rooms/:id/reviews', (req, res) => {
+app.get('http://localhost:3002/rooms/:roomId/reviews', (req, res) => {
   getReviews(req.params.id, (err, data) => {
     if (err) {
       res.status(503).send(err);

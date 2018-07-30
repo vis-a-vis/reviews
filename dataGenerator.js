@@ -1,43 +1,38 @@
 const fs = require('fs');
 const faker = require('faker');
-const connection = require('./db/index');
 
-function csv(arr) {
-  const keys = Object.keys(arr[0]);
-  let result = `${keys.join('\t')}\n`;
+const reviews = (numOfReview) => {
+  let csv = 'id, roomId, userName, img, date, review, accuracy, communication, cleanliness, location, checkin, value';
 
-  arr.forEach((obj) => {
-    keys.forEach((k, ix) => {
-      if (ix) result += '\t';
-      result += obj[k];
-    });
-    result += '\n';
-  });
-
-  fs.writeFile('fakeData.js', result, (err) => {
-    if (err) {
-      console.log('Error writing data', err);
-    } else {
-      console.log('Saved!');
-    }
-  });
-}
-
-const generateFakeData = () => {
-  const arr = [];
-  const review = {
-    userName: faker.name.findName(),
-    img: faker.image.avatar(),
-    addedAt: faker.date.recent(),
-    review: faker.lorem.paragraph(),
-  };
-  arr.push(review);
-  csv(arr);
+  for (let i = 0; i < numOfReview; i++) {
+    const roomId = Math.floor(Math.random() * 100) + 1;
+    const userName = faker.name.firstName();
+    const img = faker.image.avatar();
+    const date = faker.date.recent();
+    const review = faker.lorem.paragraph();
+    const accuracy = Math.floor(Math.random() * 5) + 1;
+    const communication = Math.floor(Math.random() * 5) + 1;
+    const cleanliness = Math.floor(Math.random() * 5) + 1;
+    const location = Math.floor(Math.random() * 5) + 1;
+    const checkin = Math.floor(Math.random() * 5) + 1;
+    const value = Math.floor(Math.random() * 5) + 1;
+    const average = Math.round(
+      (accuracy + communication + cleanliness + location + checkin + value) / 6,
+    );
+    csv += `\n ${i
+      + 1}, ${roomId}, ${userName}, ${img}, ${date}, '${review}', ${accuracy}, ${communication}, ${cleanliness}, ${location}, ${checkin}, ${value}, ${average}`;
+  }
+  return csv;
 };
 
-generateFakeData();
+fs.writeFile('reviews.csv', reviews(500), (err) => {
+  if (err) {
+    console.log('Error writing data', err);
+  } else {
+    console.log('Saved!');
+  }
+});
 
 module.export = {
-  generateFakeData,
-  csv,
+  reviews,
 };
