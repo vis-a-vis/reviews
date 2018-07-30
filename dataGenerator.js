@@ -2,13 +2,19 @@ const fs = require('fs');
 const faker = require('faker');
 
 const reviews = (numOfReview) => {
-  let csv = 'id, roomId, userName, img, date, review, accuracy, communication, cleanliness, location, checkin, value';
+  let csv = 'id, roomId, userName, img, date, review, accuracy, communication, cleanliness, location, checkin, value, average';
 
-  for (let i = 0; i < numOfReview; i++) {
+  function randomDate(start, end) {
+    const date = new Date(+start + Math.random() * (end - start));
+    return date;
+  }
+
+  const d = new Date();
+  for (let i = 0; i < numOfReview; i += 1) {
     const roomId = Math.floor(Math.random() * 100) + 1;
     const userName = faker.name.firstName();
     const img = faker.image.avatar();
-    const date = faker.date.recent();
+    const date = randomDate(new Date(2010, 0, 1), new Date());
     const review = faker.lorem.paragraph();
     const accuracy = Math.floor(Math.random() * 5) + 1;
     const communication = Math.floor(Math.random() * 5) + 1;

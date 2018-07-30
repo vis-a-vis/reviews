@@ -15,6 +15,15 @@ connection.connect((err) => {
   console.log('connected to mysql, locked and loaded!');
 });
 
+const getReviews = (roomId, callback) => {
+  connection.query(
+    'SELECT userName, img, date, review FROM reviews where roomId = ?',
+    [roomId],
+    callback,
+  );
+};
+
 module.exports = {
   connection,
+  getReviews,
 };

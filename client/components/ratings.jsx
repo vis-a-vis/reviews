@@ -1,17 +1,24 @@
 import React from 'react';
-// import Ratings from 'react-ratings-declarative';
+import StarRatingComponent from 'react-star-rating-component';
 
-const Ratings = (props) => {
-  return (
-    <h2>Star Rating</h2>
-    <div>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-    </div>
-  );
-};
+const Ratings = props => (
+  <div>
+    <h3>
+      Ratings:
+      {/* {rating} */}
+    </h3>
+    <StarRatingComponent
+      name="rate2"
+      editing={false}
+      renderStarIcon={() => (
+        <span>
+★
+        </span>
+      )}
+      starCount={5}
+      value={5}
+    />
+  </div>
+);
 
 export default Ratings;

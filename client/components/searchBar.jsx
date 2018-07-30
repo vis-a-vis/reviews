@@ -7,6 +7,7 @@ class SearchBar extends React.Component {
     this.state = {
       query: '',
     };
+    this.handleQueryChange = this.handleQueryChange.bind(this);
   }
 
   handleQueryChange(e) {
@@ -14,10 +15,11 @@ class SearchBar extends React.Component {
   }
 
   render() {
+    const { query } = this.state;
     return (
       <div>
         <view>
-          <input value={this.state.query} onChange={this.handleChange} />
+          <input value={query} onChange={this.handleQueryChange} placeholder="Search reviews" />
         </view>
       </div>
     );

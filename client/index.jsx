@@ -1,14 +1,18 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-class Reviews extends React.Component {
+import SearchBar from './components/SearchBar.jsx';
+import Reviews from './components/Reviews.jsx';
+import ReviewList from './components/ReviewList.jsx';
+import Ratings from './components/Ratings.jsx';
+
+class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       reviews: [],
     };
-    // this.onStarClick = this.onStarClick.bind(this);
   }
 
   componentDidMount() {
@@ -25,13 +29,15 @@ class Reviews extends React.Component {
       .catch(err => console.log('error fetching reviews', err));
   }
 
-  // search(term) {
-  //   console.log(`${term} was searched`);
-  // }
-
   render() {
     return (
       <div>
+        <h1>
+Reviews:
+        </h1>
+        <ReviewList />
+        <Ratings />
+        <SearchBar />
         <ul>
           {this.state.reviews.map((review, index) => (
             <li key={index}>
@@ -46,5 +52,4 @@ class Reviews extends React.Component {
     );
   }
 }
-
-export default Reviews;
+ReactDOM.render(<App />, document.getElementById('app'));
