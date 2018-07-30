@@ -8,10 +8,18 @@ class SearchBar extends React.Component {
       query: '',
     };
     this.handleQueryChange = this.handleQueryChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleQueryChange(e) {
+    console.log(e.target.value);
     this.setState({ query: e.target.value });
+  }
+
+  handleKeyPress(e) {
+    if (e.keyCode === 13) {
+      this.props.search(this.state.query);
+    }
   }
 
   render() {
@@ -19,7 +27,12 @@ class SearchBar extends React.Component {
     return (
       <div>
         <view>
-          <input value={query} onChange={this.handleQueryChange} placeholder="Search reviews" />
+          <input
+            value={query}
+            onChange={this.handleQueryChange}
+            onKeyDown={this.handleKeyPress}
+            placeholder="Search reviews"
+          />
         </view>
       </div>
     );

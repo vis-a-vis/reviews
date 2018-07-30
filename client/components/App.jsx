@@ -11,6 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       reviews: [],
+      filtered: [],
     };
   }
 
@@ -26,6 +27,10 @@ class App extends React.Component {
         this.setState({ reviews: res.data });
       })
       .catch(err => console.log('error fetching reviews', err));
+  }
+
+  search(term) {
+    console.log(term);
   }
 
   render() {
@@ -48,7 +53,7 @@ Reviews
           value={5}
         />
         <span>
-          <SearchBar />
+          <SearchBar search={this.search} />
         </span>
         <Reviews review={this.state.reviews} />
       </div>
