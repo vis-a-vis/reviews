@@ -34,8 +34,14 @@ class App extends React.Component {
   }
 
   render() {
+    const img = {
+      width: 48,
+      height: 48,
+      display: 'block',
+      borderRadius: '50%',
+    };
     return (
-      <div>
+      <div className="container">
         <h2>
           {this.state.reviews.length}
           {' '}
@@ -56,10 +62,11 @@ Reviews
           <SearchBar search={this.search} />
         </span>
         {/* <Reviews reviews={this.state.reviews} /> */}
+
         <ul>
           {this.state.reviews.map((review, index) => (
             <li key={index}>
-              <img src={review.img} />
+              <img src={review.img} alt="true" style={img} />
               {review.date}
               {review.review}
             </li>

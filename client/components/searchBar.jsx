@@ -1,5 +1,7 @@
 import React from 'react';
 
+// import search from '../../searchGlass.png';
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -30,14 +32,19 @@ class SearchBar extends React.Component {
   render() {
     const { query } = this.state;
     return (
-      <div>
+      <div className="container">
+        {/* <img src={search} alt="true" /> */}
         <input
           value={query}
           onChange={this.handleQueryChange}
           onKeyDown={this.handleKeyPress}
           placeholder="Search reviews"
         />
-        {query.length > 0 && <button onClick={this.clearInput} type="submit" />}
+        {query.length > 0 && (
+        <span onClick={this.clearInput}>
+&#10761;
+        </span>
+        )}
       </div>
     );
   }
