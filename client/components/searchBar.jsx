@@ -9,6 +9,7 @@ class SearchBar extends React.Component {
     };
     this.handleQueryChange = this.handleQueryChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
 
   handleQueryChange(e) {
@@ -22,18 +23,21 @@ class SearchBar extends React.Component {
     }
   }
 
+  clearInput() {
+    this.setState({ query: '' });
+  }
+
   render() {
     const { query } = this.state;
     return (
       <div>
-        <view>
-          <input
-            value={query}
-            onChange={this.handleQueryChange}
-            onKeyDown={this.handleKeyPress}
-            placeholder="Search reviews"
-          />
-        </view>
+        <input
+          value={query}
+          onChange={this.handleQueryChange}
+          onKeyDown={this.handleKeyPress}
+          placeholder="Search reviews"
+        />
+        {query.length > 0 && <button onClick={this.clearInput} type="submit" />}
       </div>
     );
   }

@@ -55,7 +55,16 @@ Reviews
         <span>
           <SearchBar search={this.search} />
         </span>
-        <Reviews review={this.state.reviews} />
+        {/* <Reviews reviews={this.state.reviews} /> */}
+        <ul>
+          {this.state.reviews.map((review, index) => (
+            <li key={index}>
+              <img src={review.img} />
+              {review.date}
+              {review.review}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
