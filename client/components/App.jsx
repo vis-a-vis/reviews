@@ -4,7 +4,7 @@ import StarRatingComponent from 'react-star-rating-component';
 
 import SearchBar from './SearchBar.jsx';
 import Reviews from './Reviews.jsx';
-// import Ratings from './Ratings';
+import Ratings from './Ratings.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +12,9 @@ class App extends React.Component {
     this.state = {
       reviews: [],
       filtered: [],
+      isSearched: false,
     };
+    this.search = this.search.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +23,7 @@ class App extends React.Component {
 
   getReviews() {
     axios
-      .get('/rooms/99')
+      .get('/rooms/1')
       .then((res) => {
         console.log(res.data);
         this.setState({ reviews: res.data });
@@ -30,46 +32,48 @@ class App extends React.Component {
   }
 
   search(term) {
-    console.log(term);
+    const { reviews } = this.state;
+    let { isSearched } = this.state;
+    console.log(reviews);
+    const filteredReviews = reviews.filter(review => review.review.includes(term));
+    console.log(filteredReviews);
+    isSearched = true;
+    // term ? this.setState({ filtered: filteredReviews }) :
   }
 
   render() {
-    const img = {
-      width: 48,
-      height: 48,
-      display: 'block',
-      borderRadius: '50%',
+    const topContainer = {
+      width: 650,
+      borderbottom: '1px solid #ccc',
     };
+
     return (
-      <div className="container">
+      <div className="topContainer" style={topContainer}>
         <h2>
           {this.state.reviews.length}
           {' '}
 Reviews
+          <Ratings />
         </h2>
-        <StarRatingComponent
-          name="rate2"
-          editing={false}
-          renderStarIcon={() => (
-            <span>
-★
-            </span>
-          )}
-          starCount={5}
-          value={5}
-        />
         <span>
           <SearchBar search={this.search} />
         </span>
-        {/* <Reviews reviews={this.state.reviews} /> */}
-
         <ul>
-          {this.state.reviews.map((review, index) => (
-            <li key={index}>
-              <img src={review.img} alt="true" style={img} />
-              {review.date}
-              {review.review}
-            </li>
+          {this.state.reviews.map(review => (
+            <Reviews
+              key={review.id}
+              img={review.img}
+              name={review.userName}
+              date={review.date}
+              review={review.review}
+              average={review.average}
+              accuracy={review.accuracy}
+              communication={review.communication}
+              cleanliness={review.cleanliness}
+              location={review.location}
+              checkin={review.checkin}
+              value={review.value}
+            />
           ))}
         </ul>
       </div>
@@ -77,3 +81,18 @@ Reviews
   }
 }
 export default App;
+
+{
+  /* <ul>
+          {this.state.reviews.map(review => (
+            <li key={review.id}>
+              <img src={review.img} alt="true" style={img} />
+              {review.date}
+              if (review.review.length > 280)
+              {' '}
+              {}
+              {review.review}
+            </li>
+          ))}
+        </ul> */
+}

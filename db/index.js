@@ -16,11 +16,7 @@ connection.connect((err) => {
 });
 
 const getReviews = (roomId, callback) => {
-  connection.query(
-    'SELECT userName, img, date, review FROM reviews where roomId = ?',
-    [roomId],
-    callback,
-  );
+  connection.query('SELECT * FROM reviews where roomId = ?', [roomId], callback);
 };
 
 module.exports = {

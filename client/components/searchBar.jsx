@@ -31,9 +31,15 @@ class SearchBar extends React.Component {
 
   render() {
     const { query } = this.state;
+    const spanStyle = {
+      position: 'absolute',
+      display: 'inline-block',
+      textAlign: 'center',
+      margin: 'auto',
+    };
+
     return (
       <div className="container">
-        {/* <img src={search} alt="true" /> */}
         <input
           value={query}
           onChange={this.handleQueryChange}
@@ -41,9 +47,9 @@ class SearchBar extends React.Component {
           placeholder="Search reviews"
         />
         {query.length > 0 && (
-        <span onClick={this.clearInput}>
-&#10761;
-        </span>
+          <span onClick={this.clearInput} style={spanStyle}>
+            &#10761;
+          </span>
         )}
       </div>
     );
