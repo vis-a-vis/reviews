@@ -3,21 +3,16 @@ import React from 'react';
 import Stars from './Stars.jsx';
 
 const Ratings = (props) => {
-  const { reviews } = props;
-  // const accuracyRating = () => props.accuracy.reduce((total, review) => total + review.accuracy, 0) / reviews.length;
-  // console.log('acc', accuracyRating());
-  // const communicationRating = () => props.communication.reduce((total, review) => total + review.communication, 0) / reviews.length;
-  // const cleanlinessRating = () => props.cleanliness.reduce((total, review) => total + review.cleanliness, 0) / reviews.length;
-  // const locationRating = () => props.location.reduce((total, review) => total + review.location, 0) / reviews.length;
-  // const checkinRating = () => props.checkin.reduce((total, review) => total + review.checkin, 0) / reviews.length;
-  // const valueRating = () => props.value.reduce((total, review) => total + review.value, 0) / props.reviews.length;
+  const accuracy = () => props.review.reduce((acc, cur) => acc + cur.accuracy, 0) / props.review.length;
+  const communication = () => props.review.reduce((acc, cur) => acc + cur.communication, 0) / props.review.length;
+  const cleanliness = () => props.review.reduce((acc, cur) => acc + cur.cleanliness, 0) / props.review.length;
+  const location = () => props.review.reduce((acc, cur) => acc + cur.location, 0) / props.review.length;
+  const checkin = () => props.review.reduce((acc, cur) => acc + cur.checkin, 0) / props.review.length;
+  const value = () => props.review.reduce((acc, cur) => acc + cur.value, 0) / props.review.length;
 
-  const container = {
-    // display: 'inline-block',
-  };
   return (
-    <div className="container" style={container}>
-      <table style={container}>
+    <div className="container">
+      <table>
         <tbody>
           <tr className="leftRating">
             <td className="accuracy">
@@ -25,7 +20,7 @@ const Ratings = (props) => {
               Accuracy
               {' '}
               <span>
-                <Stars rating={5} />
+                <Stars rating={accuracy()} />
               </span>
             </td>
 
@@ -34,7 +29,7 @@ const Ratings = (props) => {
               Communication
               {' '}
               <span>
-                <Stars rating={5} />
+                <Stars rating={communication()} />
               </span>
             </td>
             <td className="cleanliness">
@@ -42,7 +37,7 @@ const Ratings = (props) => {
               Cleanliness
               {' '}
               <span>
-                <Stars rating={5} />
+                <Stars rating={cleanliness()} />
               </span>
             </td>
           </tr>
@@ -56,7 +51,7 @@ const Ratings = (props) => {
               Location
               {' '}
               <span>
-                <Stars rating={5} />
+                <Stars rating={location()} />
               </span>
             </td>
 
@@ -65,15 +60,15 @@ const Ratings = (props) => {
               Check-in
               {' '}
               <span>
-                <Stars rating={5} />
+                <Stars rating={checkin()} />
               </span>
             </td>
-            <td className="values">
+            <td className="value">
               {' '}
               Value
               {' '}
               <span>
-                <Stars rating={5} />
+                <Stars rating={value()} />
               </span>
             </td>
           </tr>

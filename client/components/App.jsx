@@ -5,6 +5,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import SearchBar from './SearchBar.jsx';
 import Reviews from './Reviews.jsx';
 import Ratings from './Ratings.jsx';
+import Stars from './Stars.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -57,25 +58,11 @@ Reviews
           <SearchBar search={this.search} />
         </div>
         <div>
-          <Ratings />
+          <Ratings review={this.state.reviews} />
+          {/* {this.state.reviews.map(review => <Ratings key={review.id} review={review} />)} */}
         </div>
         <div>
-          {this.state.reviews.map(review => (
-            <Reviews
-              key={review.id}
-              img={review.img}
-              name={review.userName}
-              date={review.date}
-              review={review.review}
-              average={review.average}
-              accuracy={review.accuracy}
-              communication={review.communication}
-              cleanliness={review.cleanliness}
-              location={review.location}
-              checkin={review.checkin}
-              value={review.value}
-            />
-          ))}
+          {this.state.reviews.map(review => <Reviews key={review.id} review={review} />)}
         </div>
       </div>
     );
@@ -97,3 +84,14 @@ export default App;
           ))}
         </ul> */
 // }
+// img={review.img}
+//               name={review.userName}
+//               date={review.date}
+//               review={review.review}
+//               average={review.average}
+//               accuracy={review.accuracy}
+//               communication={review.communication}
+//               cleanliness={review.cleanliness}
+//               location={review.location}
+//               checkin={review.checkin}
+//               value={review.value}

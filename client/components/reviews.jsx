@@ -5,12 +5,19 @@ class Reviews extends React.Component {
     super(props);
 
     this.state = {
-      review: '',
+      // review: '',
+      // showMore: false,
     };
   }
 
+  // initialState() {
+  //   limit: 180,
+  //   showMore: true,
+  // }
+
   showMore() {
-    console.log('clicked');
+    // console.log('clicked');
+    // this.setState({ showMore: true });
   }
 
   render() {
@@ -31,18 +38,19 @@ class Reviews extends React.Component {
       <div className="container" style={reviewContainer}>
         <div>
           <div className="profile">
-            <img src={this.props.img} alt="person" style={img} />
+            <img src={this.props.review.img} alt="person" style={img} />
+            {console.log('reviewzz', this.props.review.img)}
 
             <span>
-              {this.props.name}
+              {this.props.review.userName}
             </span>
           </div>
           <span>
-            {this.props.date}
+            {this.props.review.date}
           </span>
 
           <span style={review}>
-            {this.props.review}
+            {this.props.review.review}
           </span>
         </div>
       </div>
