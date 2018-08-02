@@ -26,34 +26,25 @@ class Reviews extends React.Component {
       margin: 16,
       font: 'Helvetica Neue',
     };
-    //     if (this.props.review.length > 180) {
-    //       const restOfText = this.props.review.slice(180);
-    //       let isClicked = false;
-    //       return (
-    //         <div className="container">
-    //           <span>
-    //           {this.props.review}
-    //             <span onClick={this.showMore}>
-    //               {' '}
-    // Show more
-    //             </span>
-    //           </span>
-    //         </div>
-    //       );
-    //     }
+
     return (
       <div className="container" style={reviewContainer}>
-        <img src={this.props.img} alt="person" style={img} />
-        <span>
-          {this.props.name}
-        </span>
+        <div>
+          <div className="profile">
+            <img src={this.props.img} alt="person" style={img} />
 
-        <span>
-          {this.props.date}
-        </span>
-        <span style={review}>
-          {this.props.review}
-        </span>
+            <span>
+              {this.props.name}
+            </span>
+          </div>
+          <span>
+            {this.props.date}
+          </span>
+
+          <span style={review}>
+            {this.props.review}
+          </span>
+        </div>
       </div>
     );
   }
@@ -79,3 +70,22 @@ export default Reviews;
 ..Show more
         </span> */
 }
+
+// const profile = {
+//   display: 'inline-block',
+// };
+//     if (this.props.review.length > 180) {
+//       const restOfText = this.props.review.slice(180);
+//       let isClicked = false;
+//       return (
+//         <div className="container">
+//           <span>
+//           {this.props.review}
+//             <span onClick={this.showMore}>
+//               {' '}
+// Show more
+//             </span>
+//           </span>
+//         </div>
+//       );
+//     }

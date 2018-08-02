@@ -45,20 +45,21 @@ class App extends React.Component {
     const topContainer = {
       width: 650,
       borderbottom: '1px solid #ccc',
+      margin: 25,
     };
 
     return (
       <div className="topContainer" style={topContainer}>
-        <h2>
+        <div>
           {this.state.reviews.length}
           {' '}
 Reviews
-          <Ratings />
-        </h2>
-        <span>
           <SearchBar search={this.search} />
-        </span>
-        <ul>
+        </div>
+        <div>
+          <Ratings />
+        </div>
+        <div>
           {this.state.reviews.map(review => (
             <Reviews
               key={review.id}
@@ -75,15 +76,15 @@ Reviews
               value={review.value}
             />
           ))}
-        </ul>
+        </div>
       </div>
     );
   }
 }
 export default App;
 
-{
-  /* <ul>
+// {
+/* <ul>
           {this.state.reviews.map(review => (
             <li key={review.id}>
               <img src={review.img} alt="true" style={img} />
@@ -95,4 +96,4 @@ export default App;
             </li>
           ))}
         </ul> */
-}
+// }
