@@ -5,7 +5,6 @@ class Reviews extends React.Component {
     super(props);
 
     this.state = {
-      // review: '',
       // showMore: false,
     };
   }

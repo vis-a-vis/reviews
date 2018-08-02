@@ -6,7 +6,6 @@ import SearchBar from './SearchBar.jsx';
 import Reviews from './Reviews.jsx';
 import Ratings from './Ratings.jsx';
 import Stars from './Stars.jsx';
-import Pages from './Pages.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,9 +14,12 @@ class App extends React.Component {
       reviews: [],
       filtered: [],
       pages: [],
+      currentPage: 1,
+      reviewsPerPage: 10,
       isSearched: false,
     };
     this.search = this.search.bind(this);
+    this.handlePageClick = this.handlePageClick.bind(this);
   }
 
   componentDidMount() {
@@ -36,11 +38,17 @@ class App extends React.Component {
   search(term) {
     const { reviews } = this.state;
     let { isSearched } = this.state;
-    console.log(reviews);
-    const filteredReviews = reviews.filter(review => review.review.includes(term));
-    console.log(filteredReviews);
+
+    // const filteredReviews = reviews.filter(review => review.review.includes(term));
+
     isSearched = true;
     // term.length > 0 ? this.setState({ reviews: filteredReviews }) : this.setState({reviews:})
+  }
+
+  handlePageClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id),
+    });
   }
 
   render() {
@@ -49,6 +57,18 @@ class App extends React.Component {
       borderbottom: '1px solid #ccc',
       margin: 25,
     };
+
+    const { reviews, currentPage, reviewsPerPage } = this.state;
+    // Logic for displaying current todos
+    const indexOfLastReviews = currentPage * reviewsPerPage;
+    const indexOfFirstReviews = indexOfLastReviews - reviewsPerPage;
+    const currentReviews = reviews.slice(indexOfFirstReviews, indexOfLastReviews);
+
+    // Logic for displaying page numbers
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i += 1) {
+      pageNumbers.push(i);
+    }
 
     return (
       <div className="topContainer" style={topContainer}>
@@ -62,8 +82,12 @@ Reviews
           <Ratings review={this.state.reviews} />
         </div>
         <div>
-          <Pages reviews={this.state.reviews} />
-          {/* {this.state.reviews.map(review => <Reviews key={review.id} review={review} />)} */}
+          {currentReviews.map(review => <Reviews key={review.id} review={review} />)}
+          {pageNumbers.map(number => (
+            <div key={number} id={number} onClick={this.handlePageClick}>
+              {number}
+            </div>
+          ))}
         </div>
         <div>
           {/* <Pages reviews={this.state.reviews} /> */}
