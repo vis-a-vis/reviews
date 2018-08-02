@@ -26,10 +26,13 @@ class Reviews extends React.Component {
       display: 'block',
       borderRadius: '50%',
     };
-    const reviewContainer = {};
+    // const reviewContainer = {
+    //   margin: 20,
+    //   display: 'inline-block',
+    // };
 
     const review = {
-      margin: 16,
+      margin: 20,
       font: 'Helvetica Neue',
     };
     const profile = {
@@ -38,19 +41,18 @@ class Reviews extends React.Component {
     };
 
     return (
-      <div className="container" style={reviewContainer}>
-        <div style={profile}>
+      <div className="container">
+        <div>
           <div className="profile">
             <img src={this.props.review.img} alt="person" style={img} />
 
             <span>
               {this.props.review.userName}
             </span>
-
-            <span>
-              {this.props.review.date}
-            </span>
           </div>
+          <span>
+            {this.props.review.date}
+          </span>
           <span style={review}>
             {/* {this.props.review.review.length < 280 ? */}
             {this.props.review.review}

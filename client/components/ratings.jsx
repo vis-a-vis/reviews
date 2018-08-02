@@ -9,12 +9,15 @@ const Ratings = (props) => {
   const checkin = () => props.review.reduce((acc, cur) => acc + cur.checkin, 0) / props.review.length;
   const value = () => props.review.reduce((acc, cur) => acc + cur.value, 0) / props.review.length;
 
+  const rating = {
+    fontsize: 20,
+  };
   return (
     <div className="container">
       <table>
         <tbody>
           <tr className="leftRating">
-            <td className="accuracy">
+            <td className="accuracy" style={rating}>
               {' '}
               Accuracy
               {' '}

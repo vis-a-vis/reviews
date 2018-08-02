@@ -37,12 +37,12 @@ class App extends React.Component {
 
   search(term) {
     const { reviews } = this.state;
-    let { isSearched } = this.state;
+    // let { isSearched } = this.state;
 
-    // const filteredReviews = reviews.filter(review => review.review.includes(term));
-
-    isSearched = true;
-    // term.length > 0 ? this.setState({ reviews: filteredReviews }) : this.setState({reviews:})
+    const filteredReviews = reviews.filter(review => review.review.includes(term));
+    console.log(filteredReviews);
+    // isSearched = true;
+    this.setState({ reviews: filteredReviews });
   }
 
   handlePageClick(event) {
@@ -57,14 +57,28 @@ class App extends React.Component {
       borderbottom: '1px solid #ccc',
       margin: 25,
     };
+    const numberOfReviews = {
+      fontSize: 30,
+      fontWeight: 'bold',
+    };
+
+    const pageContainer = {
+      margin: 30,
+    };
+    const pageNumber = {
+      width: 48,
+      height: 48,
+      display: 'inline-block',
+      borderRadius: '50%',
+      margin: 'auto',
+    };
 
     const { reviews, currentPage, reviewsPerPage } = this.state;
-    // Logic for displaying current todos
+
     const indexOfLastReviews = currentPage * reviewsPerPage;
     const indexOfFirstReviews = indexOfLastReviews - reviewsPerPage;
     const currentReviews = reviews.slice(indexOfFirstReviews, indexOfLastReviews);
 
-    // Logic for displaying page numbers
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i += 1) {
       pageNumbers.push(i);
@@ -73,9 +87,11 @@ class App extends React.Component {
     return (
       <div className="topContainer" style={topContainer}>
         <div>
-          {this.state.reviews.length}
-          {' '}
+          <div style={numberOfReviews}>
+            {this.state.reviews.length}
+            {' '}
 Reviews
+          </div>
           <SearchBar search={this.search} />
         </div>
         <div>
@@ -83,14 +99,13 @@ Reviews
         </div>
         <div>
           {currentReviews.map(review => <Reviews key={review.id} review={review} />)}
-          {pageNumbers.map(number => (
-            <div key={number} id={number} onClick={this.handlePageClick}>
-              {number}
-            </div>
-          ))}
-        </div>
-        <div>
-          {/* <Pages reviews={this.state.reviews} /> */}
+          <div style={pageContainer}>
+            {pageNumbers.map(number => (
+              <div key={number} id={number} onClick={this.handlePageClick} style={pageNumber}>
+                {number}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
