@@ -33,23 +33,27 @@ class Reviews extends React.Component {
       margin: 16,
       font: 'Helvetica Neue',
     };
+    const profile = {
+      display: 'flex',
+      flexdirection: 'column',
+    };
 
     return (
       <div className="container" style={reviewContainer}>
-        <div>
+        <div style={profile}>
           <div className="profile">
             <img src={this.props.review.img} alt="person" style={img} />
-            {console.log('reviewzz', this.props.review.img)}
 
             <span>
               {this.props.review.userName}
             </span>
-          </div>
-          <span>
-            {this.props.review.date}
-          </span>
 
+            <span>
+              {this.props.review.date}
+            </span>
+          </div>
           <span style={review}>
+            {/* {this.props.review.review.length < 280 ? */}
             {this.props.review.review}
           </span>
         </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { access } from 'fs';
 import Stars from './Stars.jsx';
 
 const Ratings = (props) => {

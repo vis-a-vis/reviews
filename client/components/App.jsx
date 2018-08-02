@@ -6,6 +6,7 @@ import SearchBar from './SearchBar.jsx';
 import Reviews from './Reviews.jsx';
 import Ratings from './Ratings.jsx';
 import Stars from './Stars.jsx';
+import Pages from './Pages.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
     this.state = {
       reviews: [],
       filtered: [],
+      pages: [],
       isSearched: false,
     };
     this.search = this.search.bind(this);
@@ -26,7 +28,6 @@ class App extends React.Component {
     axios
       .get('/rooms/1')
       .then((res) => {
-        console.log(res.data);
         this.setState({ reviews: res.data });
       })
       .catch(err => console.log('error fetching reviews', err));
@@ -39,7 +40,7 @@ class App extends React.Component {
     const filteredReviews = reviews.filter(review => review.review.includes(term));
     console.log(filteredReviews);
     isSearched = true;
-    // term ? this.setState({ filtered: filteredReviews }) :
+    // term.length > 0 ? this.setState({ reviews: filteredReviews }) : this.setState({reviews:})
   }
 
   render() {
@@ -59,39 +60,16 @@ Reviews
         </div>
         <div>
           <Ratings review={this.state.reviews} />
-          {/* {this.state.reviews.map(review => <Ratings key={review.id} review={review} />)} */}
         </div>
         <div>
-          {this.state.reviews.map(review => <Reviews key={review.id} review={review} />)}
+          <Pages reviews={this.state.reviews} />
+          {/* {this.state.reviews.map(review => <Reviews key={review.id} review={review} />)} */}
+        </div>
+        <div>
+          {/* <Pages reviews={this.state.reviews} /> */}
         </div>
       </div>
     );
   }
 }
 export default App;
-
-// {
-/* <ul>
-          {this.state.reviews.map(review => (
-            <li key={review.id}>
-              <img src={review.img} alt="true" style={img} />
-              {review.date}
-              if (review.review.length > 280)
-              {' '}
-              {}
-              {review.review}
-            </li>
-          ))}
-        </ul> */
-// }
-// img={review.img}
-//               name={review.userName}
-//               date={review.date}
-//               review={review.review}
-//               average={review.average}
-//               accuracy={review.accuracy}
-//               communication={review.communication}
-//               cleanliness={review.cleanliness}
-//               location={review.location}
-//               checkin={review.checkin}
-//               value={review.value}
