@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import StarRatingComponent from 'react-star-rating-component';
 
 import SearchBar from './SearchBar.jsx';
 import Reviews from './Reviews.jsx';
@@ -38,7 +37,6 @@ class App extends React.Component {
   search(term) {
     const { reviews } = this.state;
     // let { isSearched } = this.state;
-
     const filteredReviews = reviews.filter(review => review.review.includes(term));
     console.log(filteredReviews);
     // isSearched = true;
@@ -56,6 +54,9 @@ class App extends React.Component {
       width: 650,
       borderbottom: '1px solid #ccc',
       margin: 25,
+    };
+    const container = {
+      display: 'inline-block',
     };
     const numberOfReviews = {
       fontSize: 30,
@@ -86,7 +87,7 @@ class App extends React.Component {
 
     return (
       <div className="topContainer" style={topContainer}>
-        <div>
+        <div style={container}>
           <div style={numberOfReviews}>
             {this.state.reviews.length}
             {' '}

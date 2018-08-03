@@ -26,19 +26,27 @@ class Reviews extends React.Component {
       display: 'block',
       borderRadius: '50%',
     };
-    // const reviewContainer = {
-    //   margin: 20,
-    //   display: 'inline-block',
-    // };
 
+    const reviewSeparator = {
+      marginBottom: 20,
+    };
+
+    const line = {
+      display: 'block',
+      marginTop: 20,
+      marginBottom: 0.5,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      borderStyle: 'inset',
+      borderWidth: 1,
+    };
     const review = {
-      margin: 20,
       font: 'Helvetica Neue',
     };
-    const profile = {
-      display: 'flex',
-      flexdirection: 'column',
-    };
+    // const profile = {
+    //   display: 'flex',
+    //   flexdirection: 'column',
+    // };
 
     return (
       <div className="container">
@@ -57,6 +65,9 @@ class Reviews extends React.Component {
             {/* {this.props.review.review.length < 280 ? */}
             {this.props.review.review}
           </span>
+          <div style={reviewSeparator}>
+            <div style={line} />
+          </div>
         </div>
       </div>
     );
@@ -64,41 +75,3 @@ class Reviews extends React.Component {
 }
 
 export default Reviews;
-
-// render() {
-//   return (
-//     <div>
-//       <div>
-//       <li>
-//         <img src={review.img} alt="person" style={img} />
-//         {this.state.review.date}
-//         {this.state.review.review}
-//       </li>
-//     </div>
-//   );
-// }
-
-{
-  /* <span onClick={this.showMoreText}>
-..Show more
-        </span> */
-}
-
-// const profile = {
-//   display: 'inline-block',
-// };
-//     if (this.props.review.length > 180) {
-//       const restOfText = this.props.review.slice(180);
-//       let isClicked = false;
-//       return (
-//         <div className="container">
-//           <span>
-//           {this.props.review}
-//             <span onClick={this.showMore}>
-//               {' '}
-// Show more
-//             </span>
-//           </span>
-//         </div>
-//       );
-//     }

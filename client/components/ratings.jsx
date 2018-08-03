@@ -10,36 +10,37 @@ const Ratings = (props) => {
   const value = () => props.review.reduce((acc, cur) => acc + cur.value, 0) / props.review.length;
 
   const rating = {
-    fontsize: 20,
+    fontSize: 20,
+    margin: 20,
   };
   return (
     <div className="container">
       <table>
         <tbody>
-          <tr className="leftRating">
+          <tr>
             <td className="accuracy" style={rating}>
               {' '}
               Accuracy
               {' '}
               <span>
-                <Stars rating={accuracy()} />
+                <Stars rating={accuracy()} style={rating} />
               </span>
             </td>
 
-            <td className="communication">
+            <td className="communication" style={rating}>
               {' '}
               Communication
               {' '}
               <span>
-                <Stars rating={communication()} />
+                <Stars rating={communication()} style={rating} />
               </span>
             </td>
-            <td className="cleanliness">
+            <td className="cleanliness" style={rating}>
               {' '}
               Cleanliness
               {' '}
               <span>
-                <Stars rating={cleanliness()} />
+                <Stars rating={cleanliness()} style={rating} />
               </span>
             </td>
           </tr>
@@ -47,30 +48,30 @@ const Ratings = (props) => {
       </table>
       <table>
         <tbody>
-          <tr className="leftRating">
-            <td className="location">
+          <tr>
+            <td className="location" style={rating}>
               {' '}
               Location
               {' '}
               <span>
-                <Stars rating={location()} />
+                <Stars rating={location()} style={rating} />
               </span>
             </td>
 
-            <td className="checkin">
+            <td className="checkin" style={rating}>
               {' '}
               Check-in
               {' '}
               <span>
-                <Stars rating={checkin()} />
+                <Stars rating={checkin()} style={rating} />
               </span>
             </td>
-            <td className="value">
+            <td className="value" style={rating}>
               {' '}
               Value
               {' '}
               <span>
-                <Stars rating={value()} />
+                <Stars rating={value()} style={rating} />
               </span>
             </td>
           </tr>
