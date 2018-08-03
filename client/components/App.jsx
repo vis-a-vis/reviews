@@ -74,6 +74,10 @@ class App extends React.Component {
       margin: 'auto',
     };
 
+    const searchBar = {
+      display: 'inline-block',
+    };
+
     const { reviews, currentPage, reviewsPerPage } = this.state;
 
     const indexOfLastReviews = currentPage * reviewsPerPage;
@@ -93,7 +97,9 @@ class App extends React.Component {
             {' '}
 Reviews
           </div>
-          <SearchBar search={this.search} />
+          <div style={searchBar}>
+            <SearchBar search={this.search} />
+          </div>
         </div>
         <div>
           <Ratings review={this.state.reviews} />

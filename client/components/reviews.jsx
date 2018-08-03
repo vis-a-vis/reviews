@@ -25,6 +25,7 @@ class Reviews extends React.Component {
       height: 48,
       display: 'block',
       borderRadius: '50%',
+      float: 'left',
     };
 
     const reviewSeparator = {
@@ -41,7 +42,20 @@ class Reviews extends React.Component {
       borderWidth: 1,
     };
     const review = {
-      font: 'Helvetica Neue',
+      // font: 'Helvetica Neue',
+      display: 'block',
+      marginTop: 15,
+    };
+    const name = {
+      display: 'inline-block',
+      fontSize: 18,
+      marginLeft: 18,
+      fontWeight: 'bold',
+    };
+    const date = {
+      display: 'inline-block',
+      marginTop: 10,
+      marginLeft: 18,
     };
     // const profile = {
     //   display: 'flex',
@@ -54,12 +68,12 @@ class Reviews extends React.Component {
           <div className="profile">
             <img src={this.props.review.img} alt="person" style={img} />
 
-            <span>
+            <span style={name}>
               {this.props.review.userName}
             </span>
           </div>
-          <span>
-            {this.props.review.date}
+          <span style={date}>
+            {this.props.review.date.slice(0, 16)}
           </span>
           <span style={review}>
             {/* {this.props.review.review.length < 280 ? */}

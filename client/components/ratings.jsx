@@ -9,14 +9,23 @@ const Ratings = (props) => {
   const checkin = () => props.review.reduce((acc, cur) => acc + cur.checkin, 0) / props.review.length;
   const value = () => props.review.reduce((acc, cur) => acc + cur.value, 0) / props.review.length;
 
+  const ratingContainer = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  };
   const rating = {
     fontSize: 20,
     margin: 20,
   };
+  const body = {
+    display: 'flex',
+  };
+
   return (
     <div className="container">
-      <table>
-        <tbody>
+      <table style={ratingContainer}>
+        <tbody style={body}>
           <tr>
             <td className="accuracy" style={rating}>
               {' '}
@@ -46,7 +55,7 @@ const Ratings = (props) => {
           </tr>
         </tbody>
       </table>
-      <table>
+      <table style={ratingContainer}>
         <tbody>
           <tr>
             <td className="location" style={rating}>
