@@ -23,7 +23,7 @@ const reviews = (numOfReview) => {
     const checkin = Math.floor(Math.random() * 5) + 1;
     const value = Math.floor(Math.random() * 5) + 1;
     csv += `\n ${i
-      + 1}, ${roomId}, ${userName}, ${img}, ${date}, '${review}', ${overall}, ${accuracy}, ${communication}, ${cleanliness}, ${location}, ${checkin}, ${value}`;
+      + 1}, ${roomId}, ${userName}, ${img}, ${date}, ${review}, ${overall}, ${accuracy}, ${communication}, ${cleanliness}, ${location}, ${checkin}, ${value}`;
   }
   return csv;
 };

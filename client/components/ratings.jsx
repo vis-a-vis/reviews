@@ -2,6 +2,7 @@ import React from 'react';
 import Stars from './Stars.jsx';
 
 const Ratings = (props) => {
+  const average = () => props.review.reduce((acc, cur) => acc + cur.average, 0) / props.review.length;
   const accuracy = () => props.review.reduce((acc, cur) => acc + cur.accuracy, 0) / props.review.length;
   const communication = () => props.review.reduce((acc, cur) => acc + cur.communication, 0) / props.review.length;
   const cleanliness = () => props.review.reduce((acc, cur) => acc + cur.cleanliness, 0) / props.review.length;
@@ -9,10 +10,14 @@ const Ratings = (props) => {
   const checkin = () => props.review.reduce((acc, cur) => acc + cur.checkin, 0) / props.review.length;
   const value = () => props.review.reduce((acc, cur) => acc + cur.value, 0) / props.review.length;
 
+  const topContainer = {
+    marginBottom: 15,
+    display: 'flex',
+    flexDirection: 'column',
+  };
   const ratingContainer = {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
   };
   const rating = {
     fontSize: 20,
@@ -20,13 +25,38 @@ const Ratings = (props) => {
   };
   const body = {
     display: 'flex',
+    marginTop: 5,
+  };
+
+  const overall = {
+    position: 'relative',
+    fontSize: 24,
+  };
+  const line = {
+    display: 'block',
+    marginTop: 0,
+    marginBottom: 5,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderStyle: 'inset',
+    borderWidth: 1,
   };
 
   return (
-    <div className="container">
+    <div className="container" style={topContainer}>
       <table style={ratingContainer}>
+        <tbody style={overall}>
+          <tr>
+            <td className="average">
+              <span>
+                <Stars rating={average()} />
+              </span>
+            </td>
+          </tr>
+        </tbody>
         <tbody style={body}>
           <tr>
+            <td style={line} />
             <td className="accuracy" style={rating}>
               {' '}
               Accuracy

@@ -54,7 +54,7 @@ class Reviews extends React.Component {
     };
     const date = {
       display: 'inline-block',
-      marginTop: 10,
+      marginTop: 2.5,
       marginLeft: 18,
     };
     // const profile = {
@@ -73,7 +73,7 @@ class Reviews extends React.Component {
             </span>
           </div>
           <span style={date}>
-            {this.props.review.date.slice(0, 16)}
+            {this.props.review.date.slice(4, 16)}
           </span>
           <span style={review}>
             {/* {this.props.review.review.length < 280 ? */}

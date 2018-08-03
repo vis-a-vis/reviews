@@ -37,6 +37,11 @@ class SearchBar extends React.Component {
       textAlign: 'center',
       margin: 'auto',
     };
+    const bar = {
+      height: 30,
+      width: 150,
+      fontSize: 14,
+    };
 
     return (
       <div className="container">
@@ -45,6 +50,7 @@ class SearchBar extends React.Component {
           onChange={this.handleQueryChange}
           onKeyDown={this.handleKeyPress}
           placeholder="Search reviews"
+          style={bar}
         />
         {query.length > 0 && (
           <span onClick={this.clearInput} style={spanStyle}>

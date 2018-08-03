@@ -27,7 +27,7 @@ class App extends React.Component {
 
   getReviews() {
     axios
-      .get('/rooms/1')
+      .get('/rooms/98')
       .then((res) => {
         this.setState({ reviews: res.data });
       })
@@ -56,7 +56,9 @@ class App extends React.Component {
       margin: 25,
     };
     const container = {
-      display: 'inline-block',
+      display: 'flex',
+      flexDirection: 'row',
+      // justifyContent: 'center',
     };
     const numberOfReviews = {
       fontSize: 30,
@@ -76,6 +78,7 @@ class App extends React.Component {
 
     const searchBar = {
       display: 'inline-block',
+      marginLeft: 50,
     };
 
     const { reviews, currentPage, reviewsPerPage } = this.state;
