@@ -6,16 +6,15 @@ class Reviews extends React.Component {
 
     this.state = {
       // showMore: false,
+      // reviews: [],
     };
+    this.readMore = this.readMore.bind(this);
   }
 
-  // initialState() {
-  //   limit: 180,
-  //   showMore: true,
-  // }
-
-  showMore() {
-    // console.log('clicked');
+  readMore() {
+    console.log('clicked');
+    console.log(this.props.review.review);
+    this.setState({ reviews: this.props.review.review });
     // this.setState({ showMore: true });
   }
 
@@ -42,7 +41,6 @@ class Reviews extends React.Component {
       borderWidth: 1,
     };
     const review = {
-      // font: 'Helvetica Neue',
       display: 'block',
       marginTop: 15,
     };
@@ -57,10 +55,9 @@ class Reviews extends React.Component {
       marginTop: 2.5,
       marginLeft: 18,
     };
-    // const profile = {
-    //   display: 'flex',
-    //   flexdirection: 'column',
-    // };
+    const readMore = {
+      color: '#008489',
+    };
 
     return (
       <div className="container">
@@ -76,8 +73,19 @@ class Reviews extends React.Component {
             {this.props.review.date.slice(4, 16)}
           </span>
           <span style={review}>
-            {/* {this.props.review.review.length < 280 ? */}
-            {this.props.review.review}
+            {this.props.review.review.length > 180 && (
+              <div>
+                {this.props.review.review.slice(0, 180)}
+                <span onClick={this.readMore} style={readMore}>
+                  ...Read more
+                </span>
+              </div>
+            )}
+            {this.props.review.review.length < 180 && (
+            <div>
+              {this.props.review.review}
+            </div>
+            )}
           </span>
           <div style={reviewSeparator}>
             <div style={line} />

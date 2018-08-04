@@ -19,6 +19,7 @@ class App extends React.Component {
     };
     this.search = this.search.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
+    this.readMore = this.readMore.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +48,13 @@ class App extends React.Component {
     this.setState({
       currentPage: Number(event.target.id),
     });
+  }
+
+  readMore() {
+    console.log('clicked');
+    console.log('yo', this.state.reviews);
+    this.setState({ reviews: this.state.reviews.review });
+    // this.setState({ showMore: true });
   }
 
   render() {
@@ -108,7 +116,9 @@ Reviews
           <Ratings review={this.state.reviews} />
         </div>
         <div>
-          {currentReviews.map(review => <Reviews key={review.id} review={review} />)}
+          {currentReviews.map(review => (
+            <Reviews key={review.id} review={review} onClick={this.readMore} />
+          ))}
           <div style={pageContainer}>
             {pageNumbers.map(number => (
               <div key={number} id={number} onClick={this.handlePageClick} style={pageNumber}>

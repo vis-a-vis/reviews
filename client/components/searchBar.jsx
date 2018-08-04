@@ -31,20 +31,26 @@ class SearchBar extends React.Component {
 
   render() {
     const { query } = this.state;
+    const container = {
+      outline: 'solid 0.5px lightgrey',
+      position: 'absolute',
+    };
     const spanStyle = {
       position: 'absolute',
       display: 'inline-block',
       textAlign: 'center',
       margin: 'auto',
+      fontSize: 26,
+      color: 'lightgrey',
     };
     const bar = {
-      height: 30,
+      height: 26,
       width: 150,
       fontSize: 14,
     };
 
     return (
-      <div className="container">
+      <div className="container" style={container}>
         <input
           value={query}
           onChange={this.handleQueryChange}
