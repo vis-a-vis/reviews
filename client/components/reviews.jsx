@@ -4,17 +4,15 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      // showMore: false,
-      // reviews: [],
-    };
+    this.state = {};
     this.readMore = this.readMore.bind(this);
   }
 
   readMore() {
     console.log('clicked');
-    console.log(this.props.review.review);
-    this.setState({ reviews: this.props.review.review });
+    // console.log(this.props.review.review.slice(0));
+    this.setState({ isShowing: true });
+    this.setState({ reviews: this.props.review.review.slice(0) });
     // this.setState({ showMore: true });
   }
 
@@ -78,8 +76,14 @@ class Reviews extends React.Component {
                 {this.props.review.review.slice(0, 180)}
                 <span onClick={this.readMore} style={readMore}>
                   ...Read more
+                  {console.log(this.props.isShowing)}
                 </span>
               </div>
+            )}
+            {this.props.isShowing === true && (
+            <div>
+              {this.props.review.review}
+            </div>
             )}
             {this.props.review.review.length < 180 && (
             <div>

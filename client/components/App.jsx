@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import SearchBar from './SearchBar.jsx';
 import Reviews from './Reviews.jsx';
+import RatingOverall from './RatingOverall.jsx';
 import Ratings from './Ratings.jsx';
 import Stars from './Stars.jsx';
 
@@ -15,7 +16,7 @@ class App extends React.Component {
       pages: [],
       currentPage: 1,
       reviewsPerPage: 10,
-      isSearched: false,
+      isShowing: false,
     };
     this.search = this.search.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
@@ -28,7 +29,7 @@ class App extends React.Component {
 
   getReviews() {
     axios
-      .get('/rooms/98')
+      .get('/rooms/1')
       .then((res) => {
         this.setState({ reviews: res.data });
       })
@@ -40,7 +41,6 @@ class App extends React.Component {
     // let { isSearched } = this.state;
     const filteredReviews = reviews.filter(review => review.review.includes(term));
     console.log(filteredReviews);
-    // isSearched = true;
     this.setState({ reviews: filteredReviews });
   }
 
@@ -53,28 +53,37 @@ class App extends React.Component {
   readMore() {
     console.log('clicked');
     console.log('yo', this.state.reviews);
-    this.setState({ reviews: this.state.reviews.review });
-    // this.setState({ showMore: true });
+    this.setState({ reviews: this.state.reviews.review }, { isShowing: true });
+    // this.setState({ isShowing: true });
   }
 
   render() {
     const topContainer = {
       width: 650,
       borderbottom: '1px solid #ccc',
-      margin: 25,
+      margin: 50,
     };
-    const container = {
+    const secondContainer = {
+      width: '78%',
+      marginLeft: 26,
       display: 'flex',
       flexDirection: 'row',
-      // justifyContent: 'center',
+      justifyContent: 'space-between',
     };
+
     const numberOfReviews = {
       fontSize: 30,
       fontWeight: 'bold',
     };
+    const ratingOverall = {
+      marginRight: 140,
+    };
 
     const pageContainer = {
+      width: 640,
       margin: 30,
+      display: 'flex',
+      justifyContent: 'space-between',
     };
     const pageNumber = {
       width: 48,
@@ -82,11 +91,11 @@ class App extends React.Component {
       display: 'inline-block',
       borderRadius: '50%',
       margin: 'auto',
+      marginLeft: 28,
     };
 
     const searchBar = {
-      display: 'inline-block',
-      marginLeft: 50,
+      marginLeft: 40,
     };
 
     const { reviews, currentPage, reviewsPerPage } = this.state;
@@ -102,24 +111,34 @@ class App extends React.Component {
 
     return (
       <div className="topContainer" style={topContainer}>
-        <div style={container}>
+        <div style={secondContainer}>
           <div style={numberOfReviews}>
             {this.state.reviews.length}
             {' '}
 Reviews
           </div>
+          <div style={ratingOverall}>
+            <RatingOverall review={this.state.reviews} />
+          </div>
           <div style={searchBar}>
-            <SearchBar search={this.search} />
+            <SearchBar className="searchBar" search={this.search} />
+          </div>
+        </div>
+        <div style={pageContainer}>
+          <div>
+            <Ratings review={this.state.reviews} />
+            {currentReviews.map(review => (
+              <Reviews
+                key={review.id}
+                review={review}
+                onClick={this.readMore}
+                isShowing={this.state.isShowing}
+              />
+            ))}
           </div>
         </div>
         <div>
-          <Ratings review={this.state.reviews} />
-        </div>
-        <div>
-          {currentReviews.map(review => (
-            <Reviews key={review.id} review={review} onClick={this.readMore} />
-          ))}
-          <div style={pageContainer}>
+          <div>
             {pageNumbers.map(number => (
               <div key={number} id={number} onClick={this.handlePageClick} style={pageNumber}>
                 {number}

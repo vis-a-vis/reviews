@@ -1,7 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1532670770198" clover="3.2.0">
-  <project timestamp="1532670770199" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0">
+<coverage generated="1533423641699" clover="3.2.0">
+  <project timestamp="1533423641699" name="All files">
+    <metrics statements="112" coveredstatements="22" conditionals="16" coveredconditionals="2" methods="42" coveredmethods="0" elements="170" coveredelements="24" complexity="0" loc="112" ncloc="112" packages="3" files="8" classes="8">
+      <package name="client.components">
+        <metrics statements="83" coveredstatements="3" conditionals="10" coveredconditionals="0" methods="37" coveredmethods="0"/>
+        <file name="App.jsx" path="/Users/joshcho/Documents/frontendcapstone/reviews/client/components/App.jsx">
+          <metrics statements="34" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="0"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="74" count="0" type="stmt"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="82" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="97" count="0" type="stmt"/>
+          <line num="101" count="0" type="stmt"/>
+          <line num="103" count="0" type="stmt"/>
+          <line num="104" count="0" type="stmt"/>
+          <line num="105" count="0" type="stmt"/>
+          <line num="107" count="0" type="stmt"/>
+          <line num="108" count="0" type="stmt"/>
+          <line num="109" count="0" type="stmt"/>
+          <line num="112" count="0" type="stmt"/>
+          <line num="131" count="0" type="stmt"/>
+          <line num="143" count="0" type="stmt"/>
+        </file>
+        <file name="RatingOverall.jsx" path="/Users/joshcho/Documents/frontendcapstone/reviews/client/components/RatingOverall.jsx">
+          <metrics statements="4" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="10" count="0" type="stmt"/>
+        </file>
+        <file name="Ratings.jsx" path="/Users/joshcho/Documents/frontendcapstone/reviews/client/components/Ratings.jsx">
+          <metrics statements="14" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="0"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+        </file>
+        <file name="Reviews.jsx" path="/Users/joshcho/Documents/frontendcapstone/reviews/client/components/Reviews.jsx">
+          <metrics statements="14" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+          <line num="51" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+        </file>
+        <file name="SearchBar.jsx" path="/Users/joshcho/Documents/frontendcapstone/reviews/client/components/SearchBar.jsx">
+          <metrics statements="15" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="5" coveredmethods="0"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+        </file>
+        <file name="Stars.jsx" path="/Users/joshcho/Documents/frontendcapstone/reviews/client/components/Stars.jsx">
+          <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="db">
+        <metrics statements="10" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <file name="index.js" path="/Users/joshcho/Documents/frontendcapstone/reviews/db/index.js">
+          <metrics statements="10" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="server">
+        <metrics statements="19" coveredstatements="14" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="0"/>
+        <file name="server.js" path="/Users/joshcho/Documents/frontendcapstone/reviews/server/server.js">
+          <metrics statements="19" coveredstatements="14" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="cond" truecount="2" falsecount="0"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+        </file>
+      </package>
     </metrics>
   </project>
 </coverage>
