@@ -126,7 +126,7 @@ Reviews
         </div>
         <div style={pageContainer}>
           <div>
-            <Ratings review={this.state.reviews} />
+            <Ratings className="ratings" review={this.state.reviews} />
             {currentReviews.map(review => (
               <Reviews
                 key={review.id}

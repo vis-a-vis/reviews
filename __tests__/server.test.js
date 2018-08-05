@@ -6,6 +6,5 @@ describe('API', () => {
     .get('/rooms/1')
     .then((response) => {
       expect(response.statusCode).toBe(200);
-      done();
     }));
 });

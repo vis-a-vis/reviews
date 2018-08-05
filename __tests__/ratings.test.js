@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import Ratings from '../client/components/Ratings';
 
 describe('<Ratings />', () => {
-  it('should render 6 ratings', () => {
+  it('should render location rating', () => {
     const wrapper = shallow(<Ratings />);
-    expect(wrapper.find(Ratings)).to.have.length(6);
+    expect(wrapper.find('.container')).to.have.length(6);
   });
 });
