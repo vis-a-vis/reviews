@@ -94,9 +94,7 @@ class App extends React.Component {
       marginLeft: 40,
     };
 
-    const {
-      reviews, currentPage, reviewsPerPage, filteredResults,
-    } = this.state;
+    const { currentPage, reviewsPerPage, filteredResults } = this.state;
 
     const indexOfLastReviews = currentPage * reviewsPerPage;
     const indexOfFirstReviews = indexOfLastReviews - reviewsPerPage;

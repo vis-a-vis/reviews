@@ -93,7 +93,7 @@ class Reviews extends React.Component {
             </span>
           </div>
           <span style={date}>
-            {/* {this.props.review.date.slice(4, 16)} */}
+            {this.props.review.date.slice(4, 16)}
           </span>
           <span style={review}>
             {this.commentRender()}
