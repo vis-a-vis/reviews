@@ -16,6 +16,7 @@ class App extends React.Component {
       reviewsPerPage: 10,
     };
     this.search = this.search.bind(this);
+    this.resetSearch = this.resetSearch.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
@@ -39,6 +40,11 @@ class App extends React.Component {
     const filteredReviews = reviews.filter(review => review.review.includes(term));
 
     term.length > 0 ? this.setState({ filteredResults: filteredReviews }) : this.resetSearch();
+  }
+
+  resetSearch() {
+    const { reviews } = this.state;
+    this.setState({ filteredResults: reviews });
   }
 
   handlePageClick(event) {
@@ -113,7 +119,7 @@ Reviews
             <RatingOverall review={this.state.reviews} />
           </div>
           <div style={searchBar}>
-            <SearchBar className="searchBar" search={this.search} />
+            <SearchBar className="searchBar" search={this.search} reset={this.resetSearch} />
           </div>
         </div>
         <div style={pageContainer}>

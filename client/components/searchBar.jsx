@@ -25,7 +25,8 @@ class SearchBar extends React.Component {
   }
 
   clearInput() {
-    this.setState({ query: '' });
+    const { reset } = this.props;
+    this.setState({ query: '' }, reset);
   }
 
   render() {
