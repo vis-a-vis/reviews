@@ -1,7 +1,5 @@
 import React from 'react';
 
-// import search from '../../searchGlass.png';
-
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -15,13 +13,14 @@ class SearchBar extends React.Component {
   }
 
   handleQueryChange(e) {
-    console.log(e.target.value);
     this.setState({ query: e.target.value });
   }
 
   handleKeyPress(e) {
+    const { search } = this.props;
+    const { query } = this.state;
     if (e.keyCode === 13) {
-      this.props.search(this.state.query);
+      search(query);
     }
   }
 

@@ -5,22 +5,18 @@ import SearchBar from './SearchBar.jsx';
 import Reviews from './Reviews.jsx';
 import RatingOverall from './RatingOverall.jsx';
 import Ratings from './Ratings.jsx';
-import Stars from './Stars.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       reviews: [],
-      filtered: [],
-      pages: [],
+      filteredResults: [],
       currentPage: 1,
       reviewsPerPage: 10,
-      isShowing: false,
     };
     this.search = this.search.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
-    this.readMore = this.readMore.bind(this);
   }
 
   componentDidMount() {
@@ -32,29 +28,23 @@ class App extends React.Component {
       .get('/rooms/1')
       .then((res) => {
         this.setState({ reviews: res.data });
+        this.setState({ filteredResults: res.data });
       })
-      .catch(err => console.log('error fetching reviews', err));
+      .catch(err => console.error('error fetching reviews', err));
   }
 
   search(term) {
-    const { reviews } = this.state;
-    // let { isSearched } = this.state;
+    const { reviews, filteredResults } = this.state;
+
     const filteredReviews = reviews.filter(review => review.review.includes(term));
-    console.log(filteredReviews);
-    this.setState({ reviews: filteredReviews });
+
+    term.length > 0 ? this.setState({ filteredResults: filteredReviews }) : this.resetSearch();
   }
 
   handlePageClick(event) {
     this.setState({
       currentPage: Number(event.target.id),
     });
-  }
-
-  readMore() {
-    console.log('clicked');
-    console.log('yo', this.state.reviews);
-    this.setState({ reviews: this.state.reviews.review }, { isShowing: true });
-    // this.setState({ isShowing: true });
   }
 
   render() {
@@ -98,14 +88,16 @@ class App extends React.Component {
       marginLeft: 40,
     };
 
-    const { reviews, currentPage, reviewsPerPage } = this.state;
+    const {
+      reviews, currentPage, reviewsPerPage, filteredResults,
+    } = this.state;
 
     const indexOfLastReviews = currentPage * reviewsPerPage;
     const indexOfFirstReviews = indexOfLastReviews - reviewsPerPage;
-    const currentReviews = reviews.slice(indexOfFirstReviews, indexOfLastReviews);
+    const currentReviews = filteredResults.slice(indexOfFirstReviews, indexOfLastReviews);
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i += 1) {
+    for (let i = 1; i <= Math.ceil(filteredResults.length / reviewsPerPage); i += 1) {
       pageNumbers.push(i);
     }
 
@@ -128,12 +120,7 @@ Reviews
           <div>
             <Ratings className="ratings" review={this.state.reviews} />
             {currentReviews.map(review => (
-              <Reviews
-                key={review.id}
-                review={review}
-                onClick={this.readMore}
-                isShowing={this.state.isShowing}
-              />
+              <Reviews key={review.id} review={review} />
             ))}
           </div>
         </div>
