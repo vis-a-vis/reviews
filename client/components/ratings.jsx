@@ -18,7 +18,6 @@ const Ratings = (props) => {
   const secondContainer = {
     width: '100%',
     flexBasis: 'auto',
-    // display: 'flex',
   };
   const ratingContainer = {
     display: 'flex',

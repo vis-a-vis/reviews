@@ -4,16 +4,44 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
-    this.readMore = this.readMore.bind(this);
+    this.state = {
+      comment: '...',
+    };
+    this.clickReadMore = this.clickReadMore.bind(this);
   }
 
-  readMore() {
-    console.log('clicked');
-    // console.log(this.props.review.review.slice(0));
-    this.setState({ isShowing: true });
-    this.setState({ reviews: this.props.review.review.slice(0) });
-    // this.setState({ showMore: true });
+  clickReadMore(e) {
+    this.setState({ comment: e.target.value });
+    e.target.style.display = 'none';
+  }
+
+  commentRender() {
+    const readMore = {
+      color: '#008489',
+    };
+    if (this.props.review.review.length > 180) {
+      return (
+        <p>
+          {this.props.review.review.substring(0, 180)}
+          <span>
+            {this.state.comment}
+          </span>
+          <button
+            style={readMore}
+            value={this.props.review.review}
+            type="button"
+            onClick={this.clickReadMore}
+          >
+            Read more
+          </button>
+        </p>
+      );
+    }
+    return (
+      <p>
+        {this.props.review.review}
+      </p>
+    );
   }
 
   render() {
@@ -53,9 +81,6 @@ class Reviews extends React.Component {
       marginTop: 2.5,
       marginLeft: 18,
     };
-    const readMore = {
-      color: '#008489',
-    };
 
     return (
       <div className="container">
@@ -71,25 +96,7 @@ class Reviews extends React.Component {
             {this.props.review.date.slice(4, 16)}
           </span>
           <span style={review}>
-            {this.props.review.review.length > 180 && (
-              <div>
-                {this.props.review.review.slice(0, 180)}
-                <span onClick={this.readMore} style={readMore}>
-                  ...Read more
-                  {console.log(this.props.isShowing)}
-                </span>
-              </div>
-            )}
-            {this.props.isShowing === true && (
-            <div>
-              {this.props.review.review}
-            </div>
-            )}
-            {this.props.review.review.length < 180 && (
-            <div>
-              {this.props.review.review}
-            </div>
-            )}
+            {this.commentRender()}
           </span>
           <div style={reviewSeparator}>
             <div style={line} />
